@@ -24,8 +24,8 @@ export const Home = () => {
           <Card key={item.id} item={item}/>
         ))}
       </div>
+
       <ProductDetail />
-      <CheckoutSideMenu />
     </>
   );
 };

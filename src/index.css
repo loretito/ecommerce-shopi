@@ -13,3 +13,9 @@
     border-radius: 6px; /* Radio de las esquinas de la barra de desplazamiento */
   }
   
+.title {
+  font-size: x-large;
+  color: #22c55e;
+  font-weight: 700;
+  margin: 10px 0;
+}  

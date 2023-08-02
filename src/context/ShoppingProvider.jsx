@@ -28,6 +28,9 @@ export const ShoppingProvider = ({ children }) => {
   //Shopping Cart - Add products to cart
   const [cartProducts, setCartProducts] = useState([]);
 
+  //Shopping Cart - Order
+  const [order, setOrder] = useState([])
+
   const openProductDetail = itemDetail => {
     setItem(itemDetail);
     setOpenAside(true);
@@ -111,6 +114,8 @@ export const ShoppingProvider = ({ children }) => {
         addCart,
         removeCart,
         removeCartButton,
+        order, 
+        setOrder 
       }}
     >
       {children}

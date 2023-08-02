@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ShoppingContext } from "../context/ShoppingContext";
-import { CheckoutSideMenu } from "./CheckoutSideMenu";
 
 export const Navbar = () => {
   const { count, openCheckoutMenu } = useContext(ShoppingContext);
@@ -45,7 +44,7 @@ export const Navbar = () => {
 
   let menuRight = [
     {
-      to: "",
+      to: "/mail",
       text: "loreto@correo.com",
       className: "text-black/60",
     },
@@ -84,7 +83,7 @@ export const Navbar = () => {
   const activeClass = "font-bold text-green-600";
 
   return (
-    <nav className="flex justify-between items-center fixed w-full z-10 py-5 px-8 font-light top-0 bg-white drop-shadow">
+    <nav className="flex justify-between items-center fixed w-full z-10 py-5 px-8 font-light top-0 bg-white drop-shadow ">
       <ul className="flex items-center gap-3">
         {menuLeft.map(link => (
           <li key={link.text} className={link.className}>
@@ -107,7 +106,9 @@ export const Navbar = () => {
             >
               {count}
             </div>
-            <NavLink to={link.to}>{link.text}</NavLink>
+            <NavLink to={link.to}
+            className={({ isActive }) => (isActive ? activeClass : "")}
+            >{link.text}</NavLink>
           </li>
         ))}
       </ul>

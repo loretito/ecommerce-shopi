@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, MyAccount, MyOrder, MyOrders, NotFound, SignIn } from "./pages";
-import { Navbar } from "./components/Navbar";
+import { Home, MyAccount, MyOrder, MyOrderDetail, MyOrders, NotFound, SignIn } from "./pages";
+import { CheckoutSideMenu, Navbar } from "./components";
 import { Layout } from "./layouts/Layout";
 
 function App() {
@@ -19,10 +19,14 @@ function App() {
         <Route path="/" element={defaultLayout(Home)} />
         <Route path="/my-account" element={defaultLayout(MyAccount)} />
         <Route path="/my-orders" element={defaultLayout(MyOrders)} />
+        <Route path="/my-orders/last" element={defaultLayout(MyOrder)} />
         <Route path="/my-order" element={defaultLayout(MyOrder)} />
+        <Route path="/my-order/:id" element={defaultLayout(MyOrderDetail)} />
         <Route path="/sign-in" element={defaultLayout(SignIn)} />
         <Route path="/*" element={defaultLayout(NotFound)} />
       </Routes>
+
+      <CheckoutSideMenu />
     </>
   );
 }
