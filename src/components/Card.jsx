@@ -4,14 +4,17 @@ import { ShoppingContext } from "../context/ShoppingContext";
 export const Card = ({ item }) => {
   const { title, category, price, image, rating } = item;
 
-  const { setCount, openProductDetail } = useContext(ShoppingContext)
+  const { addProduct, openProductDetail, } = useContext(ShoppingContext)
+
+ 
+
   return (
     <div className="bg-gray-50 cursor-pointer w-48 h-[22rem] rounded-lg p-2 relative drop-shadow hover:drop-shadow-lg"
       onClick={() => openProductDetail(item)}
     >
-      <figure className="relative mb-2 w-full h-3/5 rounded-lg overflow-hidden">
+      <figure className="relative mb-2 w-full h-3/5 rounded-lg overflow-hidden bg-white">
         <img
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           src={image}
           alt="headphones"
         />
@@ -28,7 +31,7 @@ export const Card = ({ item }) => {
           ${price}
         </span>
         <div className="bg-green-500 rounded-lg py-1 px-2 absolute bottom-2 right-2 flex items-center hover:bg-green-600 "
-          onClick={() => setCount(state => state + 1)}
+          onClick={(event) => addProduct(event, item)}
         >
           <img src="/svg/shopping-cart.svg" className="w-5" />
         </div>

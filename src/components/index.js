@@ -1,3 +1,5 @@
 export * from './Card'
 export * from './Navbar'
 export * from './ProductDetail'
+export * from './CheckoutSideMenu'
+export * from './OrderCard'
