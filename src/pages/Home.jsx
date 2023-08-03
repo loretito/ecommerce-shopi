@@ -33,7 +33,7 @@ export const Home = () => {
         <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
-          className="flex-shrink-0  inline-flex items-center py-2.5 px-3 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+          className="flex-shrink-0  inline-flex items-center py-2.5 px-3 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200  dark:bg-gray-700 dark:hover:bg-gray-600  dark:text-white dark:border-gray-600"
           type="button"
           onClick={() => setOpenSelect(state => !state)}
         >
@@ -58,7 +58,7 @@ export const Home = () => {
           id="dropdown"
           className={`z-10 ${
             openSelect ? "block" : "hidden"
-          } bg-white divide-y divide-gray-100 rounded-lg shadow w-38 dark:bg-gray-700 absolute -bottom-[10rem]`}
+          } bg-white divide-y divide-gray-100 rounded-lg shadow w-38 dark:bg-gray-700 absolute -bottom-[10.2rem]`}
         >
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -115,7 +115,7 @@ export const Home = () => {
         ))}
       </div>
       {loading && <Loader />}
-      {!loading && filteredItems.length === 0 && <p>No results found</p>}
+      {!loading && filteredItems.length === 0 && <p>No results</p>}
       <ProductDetail />
     </>
   );
