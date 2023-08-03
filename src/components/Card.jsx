@@ -23,7 +23,7 @@ export const Card = ({ item }) => {
       <div className="flex flex-col mt-1">
         <span className="font-semibold text-sm line-clamp-2">{title}</span>
         <div className="absolute bottom-10 flex items-center text-sm">
-          <img src="/svg/star.svg" className="w-4" />
+          <img src="/svg/star.svg" className="w-4" alt="stars"/>
           <p className="ml-1">{rating.rate}</p>
           <p className="ml-4 text-slate-500 text-xs">{rating.count} reviews</p>
         </div>
@@ -33,7 +33,7 @@ export const Card = ({ item }) => {
         <div className="bg-green-500 rounded-lg py-1 px-2 absolute bottom-2 right-2 flex items-center hover:bg-green-600 "
           onClick={(event) => addProduct(event, item)}
         >
-          <img src="/svg/shopping-cart.svg" className="w-5" />
+          <img src="/svg/shopping-cart.svg" className="w-5" alt='Add to cart'/>
         </div>
       </div>
     </div>

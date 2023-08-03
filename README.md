@@ -7,7 +7,7 @@
 <!-- Important Links -->
 <div align='center'>
     <p>
-        <a href="#" target='_blank'>Demo</a>
+        <a href="https://shoppi-e-commerce.netlify.app/" target='_blank'>Demo</a>
         ·
         <!-- <a href="#">Video</a>
         · -->

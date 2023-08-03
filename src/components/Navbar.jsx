@@ -32,6 +32,7 @@ export const Navbar = () => {
     {
       text: (
         <img
+          alt="checkout-cart"
           src="/svg/shopping-cart-navbar.svg"
           className="w-8"
           onClick={() => {
