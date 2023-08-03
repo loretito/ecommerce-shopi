@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { ShoppingContext } from "./ShoppingContext";
 
 export const ShoppingProvider = ({ children }) => {
@@ -10,6 +10,8 @@ export const ShoppingProvider = ({ children }) => {
 
   //Shopping Cart - Open/close checkout cart
   const [checkoutSideMenu, setCheckoutSideMenu] = useState(false);
+
+  const [loading, setLoading] = useState(true)
 
   //Shopping Cart - Show item (product)
   const [item, setItem] = useState({
@@ -29,12 +31,12 @@ export const ShoppingProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
 
   //Shopping Cart - Order
-  const [order, setOrder] = useState([])
+  const [order, setOrder] = useState([]);
 
   const openProductDetail = itemDetail => {
     setItem(itemDetail);
     setOpenAside(true);
-    setCheckoutSideMenu(false)
+    setCheckoutSideMenu(false);
   };
 
   const closeProductDetail = () => {
@@ -44,7 +46,7 @@ export const ShoppingProvider = ({ children }) => {
 
   const openCheckoutMenu = () => {
     setCheckoutSideMenu(state => !state);
-    openAside && setOpenAside(false) 
+    openAside && setOpenAside(false);
   };
 
   const closeCheckoutMenu = () => {
@@ -96,6 +98,51 @@ export const ShoppingProvider = ({ children }) => {
     setCartProducts(newCartProduct);
   };
 
+  //Get products
+  const [items, setItems] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const [searchByTitle, setsearchByTitle] = useState("");
+
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products`)
+      .then(res =>
+        res.json().then(data => {
+          setItems(data);
+          setLoading(false)
+        })
+      )
+      .catch(error => {
+        console.error(error);
+      });
+
+    fetch("https://fakestoreapi.com/products/categories")
+      .then(res => res.json().then(data => setCategories(data)))
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [category, setcategory] = useState("");
+
+  const filterItemsByTitle = (itemList, searchTitle, category) => {
+    const filter = itemList.filter(item_ =>
+      item_.title.toLowerCase().includes(searchTitle.toLowerCase())
+      );
+    if (searchByTitle === "" && category === "") {
+      return itemList;
+    }else if(category === ''){
+      return filter
+    }
+
+    return filter.filter(item => item.category === category);
+  };
+
+  useEffect(() => {
+    setFilteredItems(filterItemsByTitle(items, searchByTitle, category));
+  }, [searchByTitle, items, category]); //add category
+
   return (
     <ShoppingContext.Provider
       value={{
@@ -114,8 +161,16 @@ export const ShoppingProvider = ({ children }) => {
         addCart,
         removeCart,
         removeCartButton,
-        order, 
-        setOrder 
+        order,
+        setOrder,
+        items,
+        setItems,
+        searchByTitle,
+        setsearchByTitle,
+        filteredItems,
+        categories,
+        setcategory,
+        loading
       }}
     >
       {children}

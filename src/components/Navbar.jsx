@@ -15,39 +15,10 @@ export const Navbar = () => {
       ),
       className: "font-bold text-2xl",
     },
-    {
-      to: "/clothes",
-      text: "Clothes",
-      className: "",
-    },
-    {
-      to: "/electronics",
-      text: "Electronics",
-      className: "",
-    },
-    {
-      to: "/furnitures",
-      text: "Furnitures",
-      className: "",
-    },
-    {
-      to: "/toys",
-      text: "Toys",
-      className: "",
-    },
-    {
-      to: "/other",
-      text: "Other",
-      className: "",
-    },
+    
   ];
 
   let menuRight = [
-    {
-      to: "/mail",
-      text: "loreto@correo.com",
-      className: "text-black/60",
-    },
     {
       to: "/my-orders",
       text: "My Orders",
@@ -56,11 +27,6 @@ export const Navbar = () => {
     {
       to: "/my-account",
       text: "My Account",
-      className: "",
-    },
-    {
-      to: "/sign-in",
-      text: "Sign in",
       className: "",
     },
     {
@@ -83,7 +49,7 @@ export const Navbar = () => {
   const activeClass = "font-bold text-green-600";
 
   return (
-    <nav className="flex justify-between items-center fixed w-full z-10 py-5 px-8 font-light top-0 bg-white drop-shadow ">
+    <nav className="flex justify-between items-center fixed md:w-full w-screen z-20 py-5 px-4 lg:px-96 md:px-16  font-light top-0 bg-white drop-shadow ">
       <ul className="flex items-center gap-3">
         {menuLeft.map(link => (
           <li key={link.text} className={link.className}>
@@ -97,6 +63,7 @@ export const Navbar = () => {
         ))}
       </ul>
       <ul className="flex items-center gap-3">
+        <li className="text-gray-500 hidden sm:block">loreto@mail.com</li>
         {menuRight.map(link => (
           <li key={link.text} className={link.className}>
             <div

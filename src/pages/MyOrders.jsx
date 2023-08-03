@@ -11,6 +11,7 @@ export const MyOrders = () => {
       <h3 className="title">My Orders</h3>
 
       <div className="w-[40rem] ">
+        {(order.length === 0) && <p className="text-center">There is not orders</p> }
         {order.map(orderItem => (
           <div key={orderItem.id} className="p-3 border-2 rounded-lg mb-4">
             <div className="flex py-4 border-b-2">
