@@ -58,7 +58,7 @@ export const OrderCard = ({ item, check, select }) => {
           )}
 
           <p className="text-lg font-semibold text-green-500">
-            ${price * quantity}
+            ${(price * quantity).toFixed(2)}
           </p>
         </div>
       </div>
