@@ -1,7 +1,25 @@
 import { useEffect, useState } from "react";
 import { ShoppingContext } from "./ShoppingContext";
 
+const parseLogin = JSON.parse(localStorage.getItem('isLogged')) || false;
+
 export const ShoppingProvider = ({ children }) => {
+  //is user logged? 
+  const [isLogged, setIsLogged] = useState(parseLogin);
+
+  //email
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    if(isLogged){
+      const parseMail = JSON.parse(localStorage.getItem('mail-shoppi')) || '';
+      setEmail(parseMail)
+    }
+
+  }, [isLogged])
+  
+
+
   //Shopping Cart - Cart quantity
   const [count, setCount] = useState(0);
 
@@ -170,7 +188,11 @@ export const ShoppingProvider = ({ children }) => {
         filteredItems,
         categories,
         setcategory,
-        loading
+        loading,
+        isLogged,
+        setIsLogged,
+        email,
+        setEmail
       }}
     >
       {children}

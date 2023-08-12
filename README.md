@@ -128,8 +128,9 @@ yarn build
 - [x] Add/remove products to the cart
 - [x] Add orders to "My Orders"
 - [x] View each detail of an order
-- [ ] Store data in localHost
-- [ ] Implement Login/SignIn/Logout functionality.
+- [x] Store data in localHost
+- [x] Implement SignIn/Logout functionality (without db only localStorage).
+- [ ] Protected Routes
 
 
 ## Contributions

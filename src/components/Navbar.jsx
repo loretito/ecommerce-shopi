@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { ShoppingContext } from "../context/ShoppingContext";
 
 export const Navbar = () => {
-  const { count, openCheckoutMenu } = useContext(ShoppingContext);
+  const { count, openCheckoutMenu, isLogged, email } = useContext(ShoppingContext);
+  const {pathname} = useLocation()
 
   let menuLeft = [
     {
@@ -22,12 +23,17 @@ export const Navbar = () => {
     {
       to: "/my-orders",
       text: "My Orders",
-      className: "",
+      className: `${isLogged ? 'block' : 'hidden'}`,
+    },
+    {
+      to: '/sign-in',
+      text: "Sign In",
+      className: `bg-green-500 text-white py-1 px-4 rounded-lg font-semibold ${!isLogged ? 'block' : 'hidden'} ${pathname == '/sign-in' ? 'hidden' : 'block'}`,
     },
     {
       to: "/my-account",
       text: "My Account",
-      className: "",
+      className: `${isLogged ? 'block' : 'hidden'}`,
     },
     {
       text: (
@@ -50,7 +56,7 @@ export const Navbar = () => {
   const activeClass = "font-bold text-green-600";
 
   return (
-    <nav className="flex justify-between items-center fixed md:w-full w-screen z-20 py-5 px-4 lg:px-96 md:px-16  font-light top-0 bg-white drop-shadow ">
+    <nav className="flex justify-between items-center fixed md:w-full w-screen z-20 py-5 px-4 xl:px-96 md:px-16  font-light top-0 bg-white drop-shadow ">
       <ul className="flex items-center gap-3">
         {menuLeft.map(link => (
           <li key={link.text} className={link.className}>
@@ -64,7 +70,7 @@ export const Navbar = () => {
         ))}
       </ul>
       <ul className="flex items-center gap-3">
-        <li className="text-gray-500 hidden sm:block">loreto@mail.com</li>
+        <li className={`text-gray-500   ${isLogged ? 'sm:block hidden' : 'hidden'}`}>{email}</li>
         {menuRight.map(link => (
           <li key={link.text} className={link.className}>
             <div
